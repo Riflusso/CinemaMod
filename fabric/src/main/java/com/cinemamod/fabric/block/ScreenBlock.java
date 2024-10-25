@@ -1,10 +1,11 @@
 package com.cinemamod.fabric.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -16,9 +17,10 @@ public class ScreenBlock extends Block implements BlockEntityProvider {
 
     public static Identifier IDENT;
     public static ScreenBlock SCREEN_BLOCK;
+    public static RegistryKey<Block> KEY;
 
-    public ScreenBlock() {
-        super(FabricBlockSettings.create().solid().strength(-1.0f, 3600000.0F).dropsNothing().nonOpaque());
+    public ScreenBlock(RegistryKey<Block> key) {
+        super(Block.Settings.create().solid().strength(-1.0f, 3600000.0F).dropsNothing().nonOpaque().registryKey(key));
     }
 
     @Override
@@ -33,9 +35,10 @@ public class ScreenBlock extends Block implements BlockEntityProvider {
 
     public static void register() {
         IDENT = Identifier.of("cinemamod", "screen");
-        SCREEN_BLOCK = new ScreenBlock();
+        KEY = RegistryKey.of(RegistryKeys.BLOCK, IDENT);
+        SCREEN_BLOCK = new ScreenBlock(KEY);
 
-        Registry.register(Registries.BLOCK, IDENT, SCREEN_BLOCK);
+        Registry.register(Registries.BLOCK, KEY, SCREEN_BLOCK);
     }
 
     @Nullable

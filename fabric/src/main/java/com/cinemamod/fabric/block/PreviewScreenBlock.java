@@ -1,8 +1,9 @@
 package com.cinemamod.fabric.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.registry.Registry;
@@ -16,9 +17,10 @@ public class PreviewScreenBlock extends Block implements BlockEntityProvider {
 
     public static Identifier IDENT;
     public static PreviewScreenBlock PREVIEW_SCREEN_BLOCK;
+    public static RegistryKey<Block> KEY;
 
-    public PreviewScreenBlock() {
-        super(FabricBlockSettings.create().solid().strength(-1.0f, 3600000.0F).dropsNothing().nonOpaque());
+    public PreviewScreenBlock(RegistryKey<Block> key) {
+        super(Block.Settings.create().solid().strength(-1.0f, 3600000.0F).dropsNothing().nonOpaque().registryKey(key));
     }
 
     @Override
@@ -33,9 +35,10 @@ public class PreviewScreenBlock extends Block implements BlockEntityProvider {
 
     public static void register() {
         IDENT = Identifier.of("cinemamod", "preview_screen");
-        PREVIEW_SCREEN_BLOCK = new PreviewScreenBlock();
+        KEY = RegistryKey.of(RegistryKeys.BLOCK, IDENT);
+        PREVIEW_SCREEN_BLOCK = new PreviewScreenBlock(KEY);
 
-        Registry.register(Registries.BLOCK, IDENT, PREVIEW_SCREEN_BLOCK);
+        Registry.register(Registries.BLOCK, KEY, PREVIEW_SCREEN_BLOCK);
     }
 
     @Nullable

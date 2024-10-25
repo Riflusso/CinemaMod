@@ -10,6 +10,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.Selectable;
 import net.minecraft.client.gui.widget.ElementListWidget;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
@@ -74,11 +75,11 @@ public class VideoQueueWidgetEntry extends ElementListWidget.Entry<VideoQueueWid
         downVoteButtonSelected = mouseX > downVoteButtonPosX && mouseX < downVoteButtonPosX + 12 && mouseY > downVoteButtonPosY && mouseY < downVoteButtonPosY + 12;
 
         if (queuedVideo.getClientState() == -1) {
-            context.drawTexture(DOWNVOTE_ACTIVE_TEXTURE, downVoteButtonPosX, downVoteButtonPosY, 12, 12, 32F, 32F, 8, 8, 8, 8);
+            context.drawTexture(RenderLayer::getGuiTextured, DOWNVOTE_ACTIVE_TEXTURE, downVoteButtonPosX, downVoteButtonPosY, 32F, 32F, 12, 12, 8, 8, 8, 8);
         } else if (downVoteButtonSelected) {
-            context.drawTexture(DOWNVOTE_SELECTED_TEXTURE, downVoteButtonPosX, downVoteButtonPosY, 12, 12, 32F, 32F, 8, 8, 8, 8);
+            context.drawTexture(RenderLayer::getGuiTextured, DOWNVOTE_SELECTED_TEXTURE, downVoteButtonPosX, downVoteButtonPosY, 32F, 32F, 12, 12, 8, 8, 8, 8);
         } else {
-            context.drawTexture(DOWNVOTE_TEXTURE, downVoteButtonPosX, downVoteButtonPosY, 12, 12, 32F, 32F, 8, 8, 8, 8);
+            context.drawTexture(RenderLayer::getGuiTextured, DOWNVOTE_TEXTURE, downVoteButtonPosX, downVoteButtonPosY, 32F, 32F, 12, 12, 8, 8, 8, 8);
         }
     }
 
@@ -89,11 +90,11 @@ public class VideoQueueWidgetEntry extends ElementListWidget.Entry<VideoQueueWid
         upVoteButtonSelected = mouseX > upVoteButtonPosX && mouseX < upVoteButtonPosX + 12 && mouseY > upVoteButtonPosY && mouseY < upVoteButtonPosY + 12;
 
         if (queuedVideo.getClientState() == 1) {
-            context.drawTexture(UPVOTE_ACTIVE_TEXTURE, upVoteButtonPosX, upVoteButtonPosY, 12, 12, 32F, 32F, 8, 8, 8, 8);
+            context.drawTexture(RenderLayer::getGuiTextured, UPVOTE_ACTIVE_TEXTURE, upVoteButtonPosX, upVoteButtonPosY, 32F, 32F, 12, 12, 8, 8, 8, 8);
         } else if (upVoteButtonSelected) {
-            context.drawTexture(UPVOTE_SELECTED_TEXTURE, upVoteButtonPosX, upVoteButtonPosY, 12, 12, 32F, 32F, 8, 8, 8, 8);
+            context.drawTexture(RenderLayer::getGuiTextured, UPVOTE_SELECTED_TEXTURE, upVoteButtonPosX, upVoteButtonPosY, 32F, 32F, 12, 12, 8, 8, 8, 8);
         } else {
-            context.drawTexture(UPVOTE_TEXTURE, upVoteButtonPosX, upVoteButtonPosY, 12, 12, 32F, 32F, 8, 8, 8, 8);
+            context.drawTexture(RenderLayer::getGuiTextured, UPVOTE_TEXTURE, upVoteButtonPosX, upVoteButtonPosY, 32F, 32F, 12, 12, 8, 8, 8, 8);
         }
     }
 
@@ -105,9 +106,9 @@ public class VideoQueueWidgetEntry extends ElementListWidget.Entry<VideoQueueWid
             trashButtonSelected = mouseX > trashButtonPosX && mouseX < trashButtonPosX + 12 && mouseY > trashButtonPosY && mouseY < trashButtonPosY + 12;
 
             if (trashButtonSelected) {
-                context.drawTexture(TRASH_SELECTED_TEXTURE, trashButtonPosX, trashButtonPosY, 12, 12, 32F, 32F, 8, 8, 8, 8);
+                context.drawTexture(RenderLayer::getGuiTextured, TRASH_SELECTED_TEXTURE, trashButtonPosX, trashButtonPosY, 32F, 32F, 12, 12, 8, 8, 8, 8);
             } else {
-                context.drawTexture(TRASH_TEXTURE, trashButtonPosX, trashButtonPosY, 12, 12, 32F, 32F, 8, 8, 8, 8);
+                context.drawTexture(RenderLayer::getGuiTextured, TRASH_TEXTURE, trashButtonPosX, trashButtonPosY, 32F, 32F, 12, 12, 8, 8, 8, 8);
             }
         }
     }

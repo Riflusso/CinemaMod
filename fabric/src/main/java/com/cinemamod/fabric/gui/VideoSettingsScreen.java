@@ -9,6 +9,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.CheckboxWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
 import net.minecraft.client.gui.widget.ButtonWidget.Builder;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -91,11 +92,11 @@ public class VideoSettingsScreen extends Screen {
 
     public void renderBackground(DrawContext context) {
         int i = this.method_31362() + 3;
-        context.drawTexture(TEXTURE, i, 64, 1, 1, 236, 8);
+        context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, i, 64, 1, 1, 236, 8, 256, 256);
         int j = this.method_31360();
         for (int k = 0; k < j; ++k)
-            context.drawTexture(TEXTURE, i, 72 + 16 * k, 1, 10, 236, 16);
-        context.drawTexture(TEXTURE, i, 72 + 16 * j, 1, 27, 236, 8);
+            context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, i, 72 + 16 * k, 1, 10, 236, 16, 256, 256);
+        context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, i, 72 + 16 * j, 1, 27, 236, 8, 256, 256);
     }
 
     @Override
